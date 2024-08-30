@@ -7,7 +7,7 @@ const upload = require('../middleware/uploadMiddleware');
 const cpUpload = upload.fields([
   { name: 'coverPhoto', maxCount: 1 },
   { name: 'mainPhoto', maxCount: 1 },
-  { name: 'subPhotos', maxCount: 4 }
+  { name: 'subPhotos', maxCount: 10 }
 ]);
 
 // Routes for travel package operations

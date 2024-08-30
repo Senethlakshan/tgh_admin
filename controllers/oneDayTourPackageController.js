@@ -3,7 +3,7 @@ const path = require('path');
 
 exports.createOneDayTourPackage = async (req, res) => {
   try {
-    const { title, description, benefits, packageDescription, activities, mapUrl, packageDetails, otherData } = req.body;
+    const { title, description, benefits, packageDescription, activities, mapUrl, includes, excludes, bookingInfo, cancellationPolicy, packagePrices, discountRates, totalAmount, discountAmount, pickupLocations, requestToBookingOption, bookingStartDate, bookingNotAvailableOption, configuration } = req.body;
     const coverPhoto = req.files.coverPhoto ? req.files.coverPhoto[0].filename : null;
     const mainPhoto = req.files.mainPhoto ? req.files.mainPhoto[0].filename : null;
     const subPhotos = req.files.subPhotos ? req.files.subPhotos.map(file => file.filename) : [];
@@ -18,8 +18,19 @@ exports.createOneDayTourPackage = async (req, res) => {
       activities,
       mapUrl,
       subPhotos,
-      packageDetails,
-      otherData
+      includes,
+      excludes,
+      bookingInfo,
+      cancellationPolicy,
+      packagePrices,
+      discountRates,
+      totalAmount,
+      discountAmount,
+      pickupLocations,
+      requestToBookingOption,
+      bookingStartDate,
+      bookingNotAvailableOption,
+      configuration
     });
 
     res.status(201).json(oneDayTourPackage);
@@ -49,7 +60,7 @@ exports.getOneDayTourPackageById = async (req, res) => {
 
 exports.updateOneDayTourPackage = async (req, res) => {
   try {
-    const { title, description, benefits, packageDescription, activities, mapUrl, packageDetails, otherData } = req.body;
+    const { title, description, benefits, packageDescription, activities, mapUrl, includes, excludes, bookingInfo, cancellationPolicy, packagePrices, discountRates, totalAmount, discountAmount, pickupLocations, requestToBookingOption, bookingStartDate, bookingNotAvailableOption, configuration } = req.body;
     const coverPhoto = req.files.coverPhoto ? req.files.coverPhoto[0].filename : null;
     const mainPhoto = req.files.mainPhoto ? req.files.mainPhoto[0].filename : null;
     const subPhotos = req.files.subPhotos ? req.files.subPhotos.map(file => file.filename) : [];
@@ -66,8 +77,19 @@ exports.updateOneDayTourPackage = async (req, res) => {
     oneDayTourPackage.activities = activities;
     oneDayTourPackage.mapUrl = mapUrl;
     oneDayTourPackage.subPhotos = subPhotos;
-    oneDayTourPackage.packageDetails = packageDetails;
-    oneDayTourPackage.otherData = otherData;
+    oneDayTourPackage.includes = includes;
+    oneDayTourPackage.excludes = excludes;
+    oneDayTourPackage.bookingInfo = bookingInfo;
+    oneDayTourPackage.cancellationPolicy = cancellationPolicy;
+    oneDayTourPackage.packagePrices = packagePrices;
+    oneDayTourPackage.discountRates = discountRates;
+    oneDayTourPackage.totalAmount = totalAmount;
+    oneDayTourPackage.discountAmount = discountAmount;
+    oneDayTourPackage.pickupLocations = pickupLocations;
+    oneDayTourPackage.requestToBookingOption = requestToBookingOption;
+    oneDayTourPackage.bookingStartDate = bookingStartDate;
+    oneDayTourPackage.bookingNotAvailableOption = bookingNotAvailableOption;
+    oneDayTourPackage.configuration = configuration;
 
     await oneDayTourPackage.save();
     res.status(200).json(oneDayTourPackage);

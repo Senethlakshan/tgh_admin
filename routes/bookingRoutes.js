@@ -2,19 +2,22 @@ const express = require('express');
 const router = express.Router();
 const bookingController = require('../controllers/bookingController');
 
-// Route to create a new booking
+// Create a new booking
 router.post('/bookings', bookingController.createBooking);
 
-// Route to get all bookings
+// Get all bookings
 router.get('/bookings', bookingController.getAllBookings);
 
-// Route to get a booking by ID
+// Get a single booking by ID
 router.get('/bookings/:id', bookingController.getBookingById);
 
-// Route to update a booking by ID
+// Update a booking by ID
 router.put('/bookings/:id', bookingController.updateBooking);
 
-// Route to delete a booking by ID
+// Delete a booking by ID
 router.delete('/bookings/:id', bookingController.deleteBooking);
+
+// Get all bookings by user ID
+router.get('/bookings/user/:userId', bookingController.getBookingsByUserId);
 
 module.exports = router;

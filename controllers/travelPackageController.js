@@ -14,7 +14,18 @@ exports.createTravelPackage = async (req, res) => {
       packageDetails,
       otherData,
       mapUrl,
-      configuration
+      configuration,
+      country,
+      category,
+      destination,
+      startLocation,
+      endLocation,
+      discountRates,
+      totalAmount,
+      discountAmount,
+      requestTobookingOption,
+      bookingStartDate,
+      BookingNotAvaibleOption
     } = req.body;
 
     const coverPhoto = req.files.coverPhoto ? req.files.coverPhoto[0].filename : null;
@@ -35,7 +46,18 @@ exports.createTravelPackage = async (req, res) => {
       packageDetails,
       otherData,
       mapUrl,
-      configuration
+      configuration,
+      country,
+      category,
+      destination,
+      startLocation,
+      endLocation,
+      discountRates,
+      totalAmount,
+      discountAmount,
+      requestTobookingOption,
+      bookingStartDate,
+      BookingNotAvaibleOption
     });
 
     res.status(201).json(travelPackage);
@@ -76,7 +98,18 @@ exports.updateTravelPackage = async (req, res) => {
       packageDetails,
       otherData,
       mapUrl,
-      configuration
+      configuration,
+      country,
+      category,
+      destination,
+      startLocation,
+      endLocation,
+      discountRates,
+      totalAmount,
+      discountAmount,
+      requestTobookingOption,
+      bookingStartDate,
+      BookingNotAvaibleOption
     } = req.body;
 
     const coverPhoto = req.files.coverPhoto ? req.files.coverPhoto[0].filename : null;
@@ -100,6 +133,17 @@ exports.updateTravelPackage = async (req, res) => {
     travelPackage.otherData = otherData;
     travelPackage.mapUrl = mapUrl;
     travelPackage.configuration = configuration;
+    travelPackage.country = country;
+    travelPackage.category = category;
+    travelPackage.destination = destination;
+    travelPackage.startLocation = startLocation;
+    travelPackage.endLocation = endLocation;
+    travelPackage.discountRates = discountRates;
+    travelPackage.totalAmount = totalAmount;
+    travelPackage.discountAmount = discountAmount;
+    travelPackage.requestTobookingOption = requestTobookingOption;
+    travelPackage.bookingStartDate = bookingStartDate;
+    travelPackage.BookingNotAvaibleOption = BookingNotAvaibleOption;
 
     await travelPackage.save();
     res.status(200).json(travelPackage);

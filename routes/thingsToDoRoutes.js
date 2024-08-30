@@ -9,4 +9,9 @@ router.get('/thingsToDo/:id', thingsToDoController.getThingsToDoById);
 router.put('/thingsToDo/:id', upload.single('coverPhoto'), thingsToDoController.updateThingsToDo);
 router.delete('/thingsToDo/:id', thingsToDoController.deleteThingsToDo);
 
+// Rating routes
+// router.post('/ratings', thingsToDoController.addRating);
+// router.put('/ratings/:id', thingsToDoController.updateRating);
+// router.delete('/ratings/:id', thingsToDoController.deleteRating);
+
 module.exports = router;

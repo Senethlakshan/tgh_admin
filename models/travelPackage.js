@@ -1,5 +1,8 @@
+//multiday tours
+
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const Rating = require('../models/Ratings');
 
 const TravelPackage = sequelize.define('TravelPackage', {
   Pkgtype: {
@@ -9,7 +12,7 @@ const TravelPackage = sequelize.define('TravelPackage', {
   },
   duration: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   title: {
     type: DataTypes.STRING,
@@ -17,7 +20,7 @@ const TravelPackage = sequelize.define('TravelPackage', {
   },
   description: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: true
   },
   coverPhoto: {
     type: DataTypes.STRING,
@@ -52,13 +55,78 @@ const TravelPackage = sequelize.define('TravelPackage', {
     allowNull: true
   },
   mapUrl: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: true
   },
   configuration: {
     type: DataTypes.JSON, // JSON object for configuration details
     allowNull: true
+  },
+  country: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  category: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  destination: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  startLocation: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  endLocation: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  discountRates: {
+    type: DataTypes.JSON, // JSON object for discount rates
+    allowNull: true
+  },
+  totalAmount: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: true
+  },
+  discountAmount: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: true
+  },
+  requestTobookingOption: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: 'N'
+  },
+  bookingStartDate: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  BookingNotAvaibleOption: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: 'N'
   }
 });
 
+
+// In multiday model file
+TravelPackage.hasMany(Rating, {
+  foreignKey: 'packageId',
+  constraints: false,
+  scope: {
+    packageType: 'multiday',
+  },
+});
+Rating.belongsTo(TravelPackage, { foreignKey: 'packageId', constraints: false });
+
 module.exports = TravelPackage;
+
+
+
+
+
+
+
+

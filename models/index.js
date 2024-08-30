@@ -11,6 +11,13 @@ const NewTransferInfo = require('./newtransferInfo');
 const TravelPackage  = require('./travelPackage');
 const Booking = require('./booking');
 const UserRequest  = require('./UserRequest'); 
+const Rating  = require('./Ratings'); 
+const Country  = require('./Country'); 
+const Season  = require('./Season'); 
+const DiscountInfo  = require('./DiscountInfo'); 
+const CategoryInfo  = require('./categoryInfo');
+const BookNewRequest  = require('./BookRequest'); 
+
 
 
 sequelize.sync({ force: false })
@@ -28,6 +35,13 @@ module.exports = {
   NewTransferInfo,
   TravelPackage,
   Booking,
-  UserRequest
+  UserRequest,
+  Rating,
+  Country,
+  Season,
+  DiscountInfo,
+  CategoryInfo,
+  BookNewRequest
+  
   
 };

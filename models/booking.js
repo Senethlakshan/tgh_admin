@@ -24,27 +24,75 @@ const Booking = sequelize.define('Booking', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  bookingStatus: {
-    type: DataTypes.ENUM('pending', 'process', 'completed', 'reject'),
+  numberOfPaxCount: {
+    type: DataTypes.JSON,
     allowNull: false,
-    defaultValue: 'pending', // Default status
+    
   },
-  bookingDate: {
-    type: DataTypes.DATE,
+  packageDetails: {
+    type: DataTypes.JSON,
+    allowNull: true
+  },
+  country: {
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: DataTypes.NOW,
   },
-  numberOfPeople: {
-    type: DataTypes.INTEGER,
+  category: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  totalCost: {
+  destination: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  startLocation: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  endLocation: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pickupLocation: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  remarks: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  invoiceAmount: {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
-  specialRequests: {
-    type: DataTypes.TEXT,
+  paymentId: {
+    type: DataTypes.STRING,
     allowNull: true,
+  },
+  paymentMethod: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  paymentStatus: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  amountPaid: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
+  paymentDate: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  bookingStatus: {
+    type: DataTypes.ENUM('pending', 'process', 'completed', 'reject'),
+    allowNull: false,
+    defaultValue: 'pending',
+  },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   }
 });
 
